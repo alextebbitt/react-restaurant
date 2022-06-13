@@ -1,0 +1,44 @@
+.dishes{
+
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display:inline-flex;
+  width: 50%;
+  padding: 20px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.dishes:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  background-color: aliceblue;
+}
+body {
+   background-image: url("https://img.freepik.com/free-photo/wooden-board-empty-table-top-blurred-background_1253-1584.jpg?t=st=1655132076~exp=1655132676~hmac=3b281e6ccbbfe3cafcc5fbbfb06955cd012c4d6a08cd2f6b907019bffb251e9d&w=826") ; 
+}
+.title {
+animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
