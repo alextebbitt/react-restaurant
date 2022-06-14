@@ -3,8 +3,10 @@
   overflow: hidden;
   padding-right: 50px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
+  
   
   
   
@@ -35,6 +37,8 @@
     color: aliceblue;
     float: left;
     padding-right: 250px;
+    
+    
     
     
 }
