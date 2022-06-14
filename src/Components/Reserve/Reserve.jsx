@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Reserve.css";
 
 export const BookingForm = () => {
   const [data, setData] = useState({
@@ -11,6 +13,7 @@ export const BookingForm = () => {
 
 const [btnDisabled, setBtnDisabled] = useState(true);
 const [message, setMessage] = useState("");
+let navigate = useNavigate();
 
 const initialState = {
   name: "",
@@ -41,15 +44,19 @@ const handleInputChange = (event) => {
 const handleSubmit = (event) => {
   event.preventDefault();
   console.log("sending data..." + data.name + " " + data.email);
+  saveResults(data);
   clearState();
   setMessage("form completed sucessfuly");
+  setTimeout(() => {
+    navigate("/");
+  }, 3000);
 };
 
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form className="form" onSubmit={handleSubmit}>
+      <input className="name"
         type="text"
         placeholder="name"
         value={data.name}
@@ -57,37 +64,60 @@ const handleSubmit = (event) => {
         name="name"
       />
 
-      <input
+      <input className="phonenumber"
         type="phonenumber"
         placeholder="Phone Number"
         value={data.phonenumber}
         onChange={handleInputChange}
         name="phonenumber"
       />
-      <input
+      <input className="date"
         type="date"
         placeholder="Date/Month/Year"
         value={data.date}
         onChange={handleInputChange}
         name="date"
       />
-      <input
+      <input className="time"
         type="time"
         placeholder="Time"
         value={data.time}
         onChange={handleInputChange}
         name="time"
       />
-      <input
+      <input className="attendees"
         type="number"
         placeholder="Attendees"
         value={data.attendees}
         onChange={handleInputChange}
         name="attendees"
       />
-      <button type="submit"disabled={btnDisabled}>Submit</button>
+      <button className="button" type="submit"disabled={btnDisabled} >Submit</button>
       {message}
     </form>
   );
 }
 export default BookingForm;
+
+function getSavedData() {
+  const usersDb = localStorage.getItem("results"); //traemos la informacion del local storage a un var
+  const dataArray = JSON.parse(usersDb) || [];
+  // const  Object.entries(dataObject); //creating var to store. necessary step to translate to js
+  return dataArray;
+}
+getSavedData();
+function saveResults(data) {
+  const database = {
+    name: data.name,
+    phonenumber: data.phonenumber,
+    date: data.date,
+    time: data.time,
+    attendees: data.attendees
+  }; //the result of a function saved in a variable
+
+  const lc = getSavedData();
+  const ls = lc.push(database);
+  console.log("this is lc ", lc);
+  localStorage.setItem("results", JSON.stringify(lc)); //pushing infoOfUsers to database array
+  //localStorage.setItem("results", JSON.stringify(database)); // puts data back into local storage
+}
