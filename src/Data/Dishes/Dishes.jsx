@@ -23,4 +23,22 @@ const Dishes = [
     image: "https://cdnb.20m.es/sites/123/2017/11/Sandwich-paella.jpg",
   },
 ];
+
+const photos = [
+  {
+    id: 1,
+    name: "",
+    img: "https://unsplash.com/s/photos/restaurants",
+  },
+  {
+    id: 1,
+    name: "",
+    img: "",
+  },
+  {
+    id: 1,
+    name: "",
+    img: "",
+  },
+];
 export default Dishes;

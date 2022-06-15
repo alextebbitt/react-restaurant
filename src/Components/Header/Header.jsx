@@ -16,9 +16,9 @@ const Header = () => {
         <span>
           <Link to="/booking">Make a reservation</Link>
         </span>
-        {/* <span>
-          <Link to="/contact">Contact</Link>
-        </span> */}
+        <span>
+          <Link to="/photos">Photos</Link>
+        </span>
         
       </div>
     </div>

@@ -56,7 +56,8 @@ const handleSubmit = (event) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <input className="name"
+      <input
+        className="name"
         type="text"
         placeholder="name"
         value={data.name}
@@ -64,35 +65,48 @@ const handleSubmit = (event) => {
         name="name"
       />
 
-      <input className="phonenumber"
+      <input
+        className="phonenumber"
         type="phonenumber"
         placeholder="Phone Number"
         value={data.phonenumber}
         onChange={handleInputChange}
         name="phonenumber"
       />
-      <input className="date"
+      <input
+        className="date"
         type="date"
         placeholder="Date/Month/Year"
         value={data.date}
         onChange={handleInputChange}
         name="date"
+        min={new Date().toISOString().split("T")[0]}
       />
-      <input className="time"
+      <input
+        className="time"
         type="time"
         placeholder="Time"
         value={data.time}
         onChange={handleInputChange}
         name="time"
       />
-      <input className="attendees"
-        type="number"
-        placeholder="Attendees"
+      <select
         value={data.attendees}
         onChange={handleInputChange}
         name="attendees"
-      />
-      <button className="button" type="submit"disabled={btnDisabled} >Submit</button>
+        className="attendees"
+      >
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+      
+      <button className="button" type="submit" disabled={btnDisabled}>
+        Submit
+      </button>
       {message}
     </form>
   );
